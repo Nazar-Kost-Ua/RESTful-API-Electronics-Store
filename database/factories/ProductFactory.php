@@ -27,7 +27,7 @@ class ProductFactory extends Factory
             'brand_id' => Brand::inRandomOrder()->value('id'),
             'category_id' => Category::whereNotNull('parent_id')->inRandomOrder()->value('id'),
             'color_id' => Color::inRandomOrder()->value('id'),
-            'product_status' => fake()->randomElement(
+            'status' => fake()->randomElement(
                 [
                     ProductStatus::ACTIVE->value,
                     ProductStatus::INACTIVE->value,
@@ -36,7 +36,7 @@ class ProductFactory extends Factory
                 ]
             ),
             'stock' => function ($attributes) {
-                if ($attributes['product_status'] == ProductStatus::OUT_OF_STOCK->value) {
+                if ($attributes['status'] == ProductStatus::OUT_OF_STOCK->value) {
                     return 0;
                 } else {
                     return fake()->numberBetween(1,400);

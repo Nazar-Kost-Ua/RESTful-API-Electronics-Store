@@ -22,7 +22,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('discount_id')->nullable()->index();
             $table->string('sku')->unique();
             $table->string('slug')->unique();
-            $table->string('product_status')->index()->default('not_active');
+            $table->string('status')->index()->default('not_active');
             $table->timestamps();
             $table->softDeletes();
 

@@ -26,7 +26,7 @@ class Product extends Model
         'discount_id',
         'sku',
         'slug',
-        'product_status',
+        'status',
     ];
 
     /**
