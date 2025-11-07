@@ -13,6 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->append(\App\Http\Middleware\ForceJsonResponseMiddleware::class);
+        $middleware->append(\App\Http\Middleware\NormalizeParameterCaseMiddleware::class);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
