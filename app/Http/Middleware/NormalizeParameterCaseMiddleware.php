@@ -11,13 +11,11 @@ class NormalizeParameterCaseMiddleware
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response) $next
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (in_array($request->method(), ['POST','DELETE','PATCH'])) {
-            $request->request->replace(array_change_key_case($request->request->all(), CASE_LOWER));
-        }
+        $request->query->replace(array_change_key_case($request->query->all(), CASE_LOWER));
 
         return $next($request);
     }
