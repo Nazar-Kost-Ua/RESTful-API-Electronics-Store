@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'default_per_page' => 15,
+
     'allowed_includes' => [
         'users' => [
             'index' => ['orders', 'cart', 'wishlist', 'reviews'],
