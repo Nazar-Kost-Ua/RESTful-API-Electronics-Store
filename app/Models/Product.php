@@ -115,7 +115,7 @@ class Product extends Model
      *
      * @return BelongsToMany<User, Product>
      */
-    public function wishlistedBy(): BelongsToMany
+    public function wishlist(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'wishlist');
     }
@@ -125,7 +125,7 @@ class Product extends Model
      *
      * @return HasMany<CartItem, Product>
      */
-    public function inCarts(): HasMany
+    public function cart(): HasMany
     {
         return $this->hasMany(CartItem::class)
             ->withPivot(['quantity', 'price'])
