@@ -1,10 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function (Request $request) {
-    return response()->json([
-        'message' => 'Hello World!'
-    ]);
+Route::prefix('v1')->group(function () {
+    Route::apiResource('users', \App\Http\Controllers\Api\V1\UserController::class);
 });
