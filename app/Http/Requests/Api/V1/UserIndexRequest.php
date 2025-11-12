@@ -14,8 +14,8 @@ class UserIndexRequest extends FormRequest
     public function __construct()
     {
         parent::__construct();
-        $this->allowedIncludes = config('data.allowed_includes.users.index') ?? [];
-        $this->allowedFields = config('data.allowed_fields.users.index') ?? [];
+        $this->allowedIncludes = config('data.allowed_includes.users_index') ?? [];
+        $this->allowedFields = config('data.allowed_fields.users_index') ?? [];
         $this->maxPerPage = config('data.max_per_page');
     }
 
@@ -62,8 +62,8 @@ class UserIndexRequest extends FormRequest
     {
         return [
             'page' => ['nullable', 'integer', 'min:1'],
-            'per_page' => ['nullable', 'integer', 'min:1', 'multiple_of:5', "max:{$this->maxPerPage}"],
-            'include' => ['nullable', 'string', function ($attribute, $value, $fail) {
+            'per_page' => ['nullable', 'integer', 'min:1', 'multiple_of:5', 'max:' . $this->maxPerPage],
+            'includes' => ['nullable', 'string', function ($attribute, $value, $fail) {
                 $this->checkIncludes($attribute, $value, $fail);
             }],
             'fields' => ['nullable', 'array'],
